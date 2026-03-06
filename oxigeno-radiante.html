@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxígeno Radiante – Ginaroli | Desmanchador Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-deep:  #0A4D8C;
+    --blue-light: #3FA9F5;
+    --blue-pale:  #E8F4FE;
+    --green-wa:   #25D366;
+    --white:      #FFFFFF;
+    --off-white:  #F5FAFF;
+    --text-dark:  #0D1B2A;
+    --text-mid:   #445566;
+    --gold:       #F5A623;
+    --radius:     16px;
+    --shadow:     0 8px 40px rgba(10,77,140,.13);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── UTILITIES ─── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 18px 36px; border-radius: 50px; font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 1.05rem; cursor: pointer; border: none;
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.2); }
+  .btn-wa {
+    background: var(--green-wa); color: #fff;
+    box-shadow: 0 6px 20px rgba(37,211,102,.4);
+  }
+  .btn-blue {
+    background: var(--blue-deep); color: #fff;
+    box-shadow: 0 6px 20px rgba(10,77,140,.35);
+  }
+  .section-tag {
+    display: inline-block; background: var(--blue-pale); color: var(--blue-deep);
+    font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 18px;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.2; margin-bottom: 16px;
+    color: var(--text-dark);
+  }
+  .center { text-align: center; }
+  .section { padding: 80px 0; }
+
+  /* ─── HEADER BAR ─── */
+  .topbar {
+    background: var(--blue-deep); color: #fff;
+    text-align: center; padding: 10px 20px;
+    font-size: .9rem; font-weight: 500; position: sticky; top: 0; z-index: 100;
+  }
+  .topbar span { color: var(--blue-light); font-weight: 700; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, #1a6dbf 60%, var(--blue-light) 100%);
+    color: #fff; padding: 90px 20px 80px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-badge {
+    display: inline-block; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+    border-radius: 50px; padding: 8px 20px; font-size: .85rem; font-weight: 600;
+    letter-spacing: .08em; margin-bottom: 28px; backdrop-filter: blur(8px);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+    text-shadow: 0 2px 20px rgba(0,0,0,.2);
+  }
+  .hero h1 em { color: var(--blue-light); font-style: normal; }
+  .hero p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem); max-width: 600px; margin: 0 auto 36px;
+    opacity: .92; line-height: 1.6;
+  }
+  .hero-cta-group { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;
+    margin-top: 48px;
+  }
+  .hero-badge-item {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50px; padding: 8px 18px; font-size: .88rem;
+    backdrop-filter: blur(6px);
+  }
+  .hero-badge-item .ico { font-size: 1.1rem; }
+
+  /* ─── PROBLEM ─── */
+  .problem { background: var(--off-white); }
+  .problem-card {
+    background: #fff; border-left: 5px solid var(--blue-deep);
+    border-radius: var(--radius); padding: 28px 30px;
+    margin-top: 30px; box-shadow: var(--shadow);
+    font-size: 1.05rem; line-height: 1.75; color: var(--text-mid);
+    position: relative;
+  }
+  .problem-card::before {
+    content: '"'; font-family: 'Playfair Display', serif;
+    font-size: 5rem; color: var(--blue-pale);
+    position: absolute; top: -10px; left: 16px; line-height: 1;
+  }
+
+  /* ─── SOLUTION ─── */
+  .solution-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 36px;
+  }
+  @media(max-width:600px) { .solution-grid { grid-template-columns: 1fr; } }
+  .solution-card {
+    background: var(--blue-pale); border-radius: var(--radius); padding: 28px;
+    border: 1px solid rgba(63,169,245,.25);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .solution-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+  .solution-card .ico { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+  .solution-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--blue-deep); }
+  .solution-card p { font-size: .95rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ─── BENEFITS ─── */
+  .benefits { background: var(--blue-deep); color: #fff; }
+  .benefits h2.section-title { color: #fff; }
+  .benefits .section-tag { background: rgba(255,255,255,.15); color: #fff; }
+  .benefits-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 36px;
+  }
+  .benefit-item {
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius); padding: 24px; transition: background .3s;
+  }
+  .benefit-item:hover { background: rgba(255,255,255,.14); }
+  .benefit-icon { font-size: 2rem; margin-bottom: 12px; }
+  .benefit-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .benefit-item p { font-size: .9rem; opacity: .82; line-height: 1.55; }
+
+  /* ─── INCLUDES ─── */
+  .includes-box {
+    background: linear-gradient(135deg, var(--blue-pale), #fff);
+    border: 2px solid var(--blue-light); border-radius: 24px;
+    padding: 40px 36px; margin-top: 36px; box-shadow: var(--shadow);
+  }
+  .includes-list { list-style: none; margin-top: 20px; }
+  .includes-list li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid rgba(63,169,245,.2);
+    font-size: 1rem; color: var(--text-mid);
+  }
+  .includes-list li:last-child { border-bottom: none; }
+  .includes-list .check { color: var(--green-wa); font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── AUTHOR ─── */
+  .author { background: var(--off-white); }
+  .author-card {
+    display: flex; gap: 32px; align-items: center;
+    background: #fff; border-radius: 24px; padding: 40px;
+    box-shadow: var(--shadow); margin-top: 32px;
+  }
+  @media(max-width:600px) { .author-card { flex-direction: column; text-align: center; } }
+  .author-avatar {
+    width: 110px; height: 110px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--blue-deep), var(--blue-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+  .author-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--blue-deep); }
+  .author-card p { color: var(--text-mid); line-height: 1.7; font-size: .98rem; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; margin-top: 36px;
+  }
+  .testimonial-card {
+    background: #fff; border-radius: var(--radius); padding: 28px;
+    box-shadow: var(--shadow); border-top: 4px solid var(--blue-light);
+    transition: transform .3s;
+  }
+  .testimonial-card:hover { transform: translateY(-5px); }
+  .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .testimonial-card p { font-size: .95rem; color: var(--text-mid); line-height: 1.65; font-style: italic; }
+  .testimonial-author { margin-top: 16px; font-weight: 700; color: var(--blue-deep); font-size: .9rem; }
+
+  /* ─── BONUS ─── */
+  .bonus { background: var(--blue-pale); }
+  .bonus-card {
+    background: #fff; border-radius: var(--radius); padding: 28px 30px;
+    display: flex; align-items: flex-start; gap: 20px;
+    box-shadow: var(--shadow); margin-top: 20px;
+  }
+  .bonus-ico { font-size: 2.5rem; flex-shrink: 0; }
+  .bonus-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--blue-deep); margin-bottom: 6px; }
+  .bonus-card p { font-size: .95rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ─── PRICING ─── */
+  .pricing { background: var(--white); }
+  .timer-box {
+    background: var(--blue-deep); color: #fff; border-radius: 16px;
+    padding: 22px 30px; text-align: center; margin-bottom: 36px;
+    box-shadow: 0 6px 24px rgba(10,77,140,.3);
+  }
+  .timer-box p { font-size: .9rem; opacity: .85; margin-bottom: 10px; text-transform: uppercase; letter-spacing: .1em; }
+  .timer { display: flex; gap: 16px; justify-content: center; }
+  .timer-unit { text-align: center; }
+  .timer-number {
+    font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900;
+    line-height: 1; display: block;
+  }
+  .timer-label { font-size: .75rem; opacity: .7; letter-spacing: .1em; text-transform: uppercase; }
+  .timer-sep { font-size: 2.4rem; line-height: 1.1; opacity: .6; align-self: flex-start; padding-top: 4px; }
+  .price-cards {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 22px; margin-top: 10px;
+  }
+  .price-card {
+    border: 2px solid rgba(63,169,245,.4); border-radius: var(--radius);
+    padding: 30px 24px; text-align: center; cursor: pointer;
+    transition: all .3s; position: relative; background: #fff;
+  }
+  .price-card.featured {
+    border-color: var(--blue-deep); background: var(--blue-deep); color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(10,77,140,.35);
+  }
+  .price-card.featured .price-label, .price-card.featured .price-desc { color: rgba(255,255,255,.8); }
+  .price-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: #fff; font-size: .75rem; font-weight: 700;
+    padding: 4px 14px; border-radius: 50px; white-space: nowrap;
+  }
+  .price-amount { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; line-height: 1; }
+  .price-amount span { font-size: 1.3rem; vertical-align: super; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+  .price-label { font-size: .85rem; color: var(--text-mid); margin-top: 6px; display: block; }
+  .price-desc { font-size: .8rem; color: var(--text-mid); margin-top: 4px; }
+  .price-cta { margin-top: 36px; text-align: center; }
+  .price-note { margin-top: 14px; font-size: .85rem; color: var(--text-mid); }
+
+  /* ─── GUARANTEE ─── */
+  .guarantee { background: var(--off-white); }
+  .guarantee-box {
+    background: #fff; border-radius: 24px; padding: 44px 40px; text-align: center;
+    max-width: 640px; margin: 36px auto 0; box-shadow: var(--shadow);
+    border: 2px solid rgba(37,211,102,.35);
+  }
+  .guarantee-icon { font-size: 4rem; margin-bottom: 18px; }
+  .guarantee-box h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 14px; color: var(--blue-deep); }
+  .guarantee-box p { color: var(--text-mid); line-height: 1.7; font-size: .98rem; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    background: linear-gradient(135deg, var(--blue-deep), #1a6dbf);
+    color: #fff; text-align: center; padding: 90px 20px;
+  }
+  .final-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 16px; }
+  .final-cta p { font-size: 1.1rem; opacity: .9; max-width: 520px; margin: 0 auto 36px; line-height: 1.65; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--text-dark); color: rgba(255,255,255,.55);
+    text-align: center; padding: 30px 20px; font-size: .85rem;
+  }
+  footer a { color: var(--blue-light); text-decoration: none; }
+  footer strong { color: #fff; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  .hero h1 { animation: fadeUp .8s ease both; }
+  .hero p  { animation: fadeUp .8s .15s ease both; }
+  .hero-cta-group { animation: fadeUp .8s .3s ease both; }
+  .hero-badges { animation: fadeUp .8s .45s ease both; }
+  .btn-wa.pulse { animation: pulse 2s infinite; }
+
+  [data-reveal] {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  [data-reveal].visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  🔥 Precio especial por tiempo limitado &nbsp;·&nbsp; <span>Compra directo al fabricante</span> &nbsp;·&nbsp; Envíos disponibles
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">✨ Ginaroli – Productos de Limpieza Premium</div>
+    <h1>Devuélvele la <em>vida</em> a tu ropa<br>en horas</h1>
+    <p>Elimina manchas difíciles y percudido sin pagar precios de marca. Resultados visibles desde la primera aplicación.</p>
+    <div class="hero-cta-group">
+      <a href="#precio" class="btn btn-wa pulse">👉 Quiero mi Oxígeno Radiante ahora</a>
+      <a href="#beneficios" class="btn" style="background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.4);">Ver cómo funciona</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge-item"><span class="ico">✅</span> Sin maltrato a la tela</div>
+      <div class="hero-badge-item"><span class="ico">💸</span> 15–20% más barato</div>
+      <div class="hero-badge-item"><span class="ico">⏱</span> Resultados en 1 hora</div>
+      <div class="hero-badge-item"><span class="ico">🔬</span> Fórmula de expertos</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem section">
+  <div class="container">
+    <div class="section-tag">El Problema</div>
+    <h2 class="section-title">¿Tu ropa favorita<br>parece no tener solución?</h2>
+    <div class="problem-card" data-reveal>
+      ¿Te ha pasado que lavas una prenda una y otra vez y la mancha sigue ahí? Las manchas de desodorante, comida o el percudido arruinan tu ropa favorita y te dejan con una sensación de frustración. Muchas veces gastas más dinero en marcas comerciales que prometen mucho y no siempre cumplen. Nadie quiere tirar una prenda que todavía puede salvarse.
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section" id="solucion">
+  <div class="container">
+    <div class="section-tag">La Solución</div>
+    <h2 class="section-title">Oxígeno Radiante de Ginaroli</h2>
+    <p style="color:var(--text-mid);line-height:1.7;max-width:640px;">Un desmanchador en polvo formulado para eliminar manchas difíciles y devolver el blanco original a tus prendas. Actúa desde la primera hora y puede recuperar ropa que parecía perdida.</p>
+    <div class="solution-grid" data-reveal>
+      <div class="solution-card"><span class="ico">🧪</span><h3>Fórmula experta</h3><p>Desarrollado por especialistas en química de limpieza con más de dos años de perfeccionamiento.</p></div>
+      <div class="solution-card"><span class="ico">👕</span><h3>Eficaz en todo</h3><p>Manchas de desodorante, comida, percudido y hasta tenis. Un solo producto, múltiples soluciones.</p></div>
+      <div class="solution-card"><span class="ico">💰</span><h3>Precio justo</h3><p>15–20% más económico que marcas comerciales, con calidad comprobada y respaldo directo del fabricante.</p></div>
+      <div class="solution-card"><span class="ico">🏭</span><h3>Directo al fabricante</span></h3><p>Compras sin intermediarios. Atención personalizada por WhatsApp para resolver cualquier duda.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits section" id="beneficios">
+  <div class="container">
+    <div class="section-tag">Beneficios</div>
+    <h2 class="section-title">Todo lo que obtienes con<br>Oxígeno Radiante</h2>
+    <div class="benefits-list" data-reveal>
+      <div class="benefit-item"><div class="benefit-icon">✨</div><h4>Elimina manchas difíciles</h4><p>Actúa sin maltratar la tela para que tu ropa quede impecable y dure más tiempo.</p></div>
+      <div class="benefit-item"><div class="benefit-icon">👕</div><h4>Recupera prendas percudidas</h4><p>Devuelve el blanco original a camisas, blusas y cualquier prenda que lo haya perdido.</p></div>
+      <div class="benefit-item"><div class="benefit-icon">👟</div><h4>Ideal para tenis</h4><p>Limpia suelas y telas de tenis con resultados que te sorprenderán desde la primera vez.</p></div>
+      <div class="benefit-item"><div class="benefit-icon">💰</div><h4>Precio imbatible</h4><p>15–20% más económico que cualquier marca comercial equivalente, sin sacrificar calidad.</p></div>
+      <div class="benefit-item"><div class="benefit-icon">⏱</div><h4>Resultados en 1 hora</h4><p>Resultados visibles desde la primera hora de aplicación (según el tipo de mancha).</p></div>
+      <div class="benefit-item"><div class="benefit-icon">🔬</div><h4>Fórmula de expertos</h4><p>Desarrollada con pasión por la química y probada por clientes reales que comparten sus resultados en video.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:44px;" data-reveal>
+      <a href="#precio" class="btn btn-wa">👉 Quiero probar Oxígeno Radiante</a>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+<section class="section" id="incluye">
+  <div class="container">
+    <div class="section-tag">¿Qué incluye?</div>
+    <h2 class="section-title">Todo lo que recibes<br>con tu pedido</h2>
+    <div class="includes-box" data-reveal>
+      <ul class="includes-list">
+        <li><span class="check">✔</span><span><strong>Bolsa de Oxígeno Radiante</strong> – según la presentación que elijas ($25, $70 o $130).</span></li>
+        <li><span class="check">✔</span><span><strong>Instructivo detallado</strong> con diferentes formas de uso para sacarle el máximo provecho.</span></li>
+        <li><span class="check">✔</span><span><strong>Guía de aplicaciones adicionales</strong> – ropa, tenis, y más superficies del hogar.</span></li>
+        <li><span class="check">✔</span><span><strong>Atención directa vía WhatsApp</strong> para resolver tus dudas en cualquier momento.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author section">
+  <div class="container">
+    <div class="section-tag">Sobre el Creador</div>
+    <h2 class="section-title">¿Quién hay detrás<br>de Ginaroli?</h2>
+    <div class="author-card" data-reveal>
+      <div class="author-avatar">🧪</div>
+      <div>
+        <h3>El creador de Ginaroli</h3>
+        <p>Soy el formulador detrás de Ginaroli, una marca dedicada a la elaboración de productos de limpieza para el hogar. Tengo más de dos años formulando y perfeccionando cada producto, con pasión por la química y el desarrollo de soluciones efectivas. Mis productos están probados por clientes reales que han compartido sus resultados en video.<br><br>Aquí no compras a una gran corporación. <strong>Compras directamente al fabricante.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container center">
+    <div class="section-tag">Testimonios</div>
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <div class="testimonials-grid" data-reveal>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Pensé que mis blusas blancas ya no tenían solución. Probé Oxígeno Radiante y en un día quedaron como nuevas. ¡Ya no gasto en otras marcas!"</p>
+        <div class="testimonial-author">– Laura M.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Lo usé en los tenis de mi hijo y me sorprendió muchísimo. Las manchas salieron mejor de lo que esperaba. Además es más barato."</p>
+        <div class="testimonial-author">– Karla R.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Tenía manchas de desodorante que nada quitaba. Con este producto sí funcionó. Ahora siempre tengo una bolsa en casa."</p>
+        <div class="testimonial-author">– Daniela G.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="bonus section">
+  <div class="container">
+    <div class="section-tag center">Bonos Especiales</div>
+    <h2 class="section-title center">Más valor por tu compra</h2>
+    <div class="bonus-card" data-reveal>
+      <div class="bonus-ico">🎁</div>
+      <div>
+        <h3>Bono 1 – Precio Especial de Mayoreo</h3>
+        <p>Compra por kilo a solo <strong>$150</strong> y ahorra aún más. Ideal si quieres usarlo constantemente o revenderlo. Valor estimado del ahorro: <strong>15–20% adicional</strong> sobre el precio regular. ¡Una inversión que se paga sola!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section" id="precio">
+  <div class="container center">
+    <div class="section-tag">Precios y Presentaciones</div>
+    <h2 class="section-title">Por menos de lo que cuesta<br>una comida rápida</h2>
+    <p style="color:var(--text-mid);margin-bottom:36px;">puedes recuperar varias prendas que pensabas perder.</p>
+
+    <!-- Timer -->
+    <div class="timer-box" data-reveal>
+      <p>⚡ Oferta especial disponible por</p>
+      <div class="timer">
+        <div class="timer-unit"><span class="timer-number" id="h">00</span><span class="timer-label">horas</span></div>
+        <div class="timer-sep">:</div>
+        <div class="timer-unit"><span class="timer-number" id="m">00</span><span class="timer-label">min</span></div>
+        <div class="timer-sep">:</div>
+        <div class="timer-unit"><span class="timer-number" id="s">00</span><span class="timer-label">seg</span></div>
+      </div>
+    </div>
+
+    <div class="price-cards" data-reveal>
+      <div class="price-card">
+        <div class="price-amount"><span>$</span>25</div>
+        <span class="price-label">Presentación Básica</span>
+        <p class="price-desc">Ideal para probar y comprobar resultados por primera vez.</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">⭐ Más popular</div>
+        <div class="price-amount"><span>$</span>70</div>
+        <span class="price-label">Presentación Mediana</span>
+        <p class="price-desc" style="color:rgba(255,255,255,.75);">La favorita de nuestros clientes. Excelente relación precio-cantidad.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-amount"><span>$</span>130</div>
+        <span class="price-label">Presentación Grande</span>
+        <p class="price-desc">Para el hogar completo. Más ahorro y más duración.</p>
+      </div>
+    </div>
+
+    <div class="price-cta" data-reveal>
+      <a href="https://wa.me/521TUNUMERO?text=Hola!%20Quiero%20pedir%20mi%20Ox%C3%ADgeno%20Radiante%20de%20Ginaroli" class="btn btn-wa" target="_blank">
+        👉 Pedir ahora por WhatsApp
+      </a>
+      <p class="price-note">🔒 Compra segura · Atención directa · Respaldo del fabricante</p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee section">
+  <div class="container center">
+    <div class="section-tag">Garantía</div>
+    <h2 class="section-title">Tu compra está protegida</h2>
+    <div class="guarantee-box" data-reveal>
+      <div class="guarantee-icon">🛡️</div>
+      <h3>Garantía de Satisfacción</h3>
+      <p>Si el producto no te funciona siguiendo correctamente las instrucciones, puedes devolverlo y te regresamos tu dinero. Tu compra está respaldada porque confiamos completamente en la calidad de nuestra fórmula. <em>(Aplican condiciones.)</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Recupera tu ropa hoy mismo</h2>
+    <p>No dejes que más manchas arruinen tus prendas favoritas. Oxígeno Radiante está listo para darte resultados reales.</p>
+    <a href="https://wa.me/521TUNUMERO?text=Hola!%20Quiero%20pedir%20mi%20Ox%C3%ADgeno%20Radiante%20de%20Ginaroli" class="btn btn-wa pulse" target="_blank">
+      👉 Quiero mi Oxígeno Radiante ahora
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Ginaroli</strong> – Productos de Limpieza para el Hogar</p>
+  <p style="margin-top:8px;">Fabricante directo &nbsp;·&nbsp; Atención por <a href="https://wa.me/521TUNUMERO" target="_blank">WhatsApp</a></p>
+  <p style="margin-top:8px;">© 2025 Ginaroli. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  // ─── COUNTDOWN TIMER (24 hours from page load) ───
+  const deadline = new Date().getTime() + 24 * 60 * 60 * 1000;
+  function updateTimer() {
+    const now = new Date().getTime();
+    const diff = Math.max(0, deadline - now);
+    const hh = Math.floor(diff / 3600000);
+    const mm = Math.floor((diff % 3600000) / 60000);
+    const ss = Math.floor((diff % 60000) / 1000);
+    document.getElementById('h').textContent = String(hh).padStart(2,'0');
+    document.getElementById('m').textContent = String(mm).padStart(2,'0');
+    document.getElementById('s').textContent = String(ss).padStart(2,'0');
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  // ─── SCROLL REVEAL ───
+  const reveals = document.querySelectorAll('[data-reveal]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
